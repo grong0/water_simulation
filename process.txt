@@ -1,0 +1,5 @@
+1. create equations for each resevior
+	1. get additional equations from velocity splitters.
+2. pick points on some water level to plug into its resevior's equation to find the final height of the speed of the resevior
+3. use that speed to plug into the other equations to get the final height of each resevior's equation
+4. profit
