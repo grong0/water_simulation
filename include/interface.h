@@ -30,7 +30,7 @@ public:
     Interface(CellType display[][DISPLAY_WIDTH]);
     Interface();
 
-    void print(body_t* bodies, size_t bodyCount);
+    void print(Body* bodies, size_t bodyCount);
 };
 
 

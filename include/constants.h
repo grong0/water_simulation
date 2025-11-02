@@ -2,7 +2,7 @@
 #define CONSTANTS_H
 
 #define GRAVITY 9.81f
-#define RHO 1000f
+#define RHO 1.0f // g/cm^3
 #define ALMOSTZERO 0.000001f
 
 enum CellType {

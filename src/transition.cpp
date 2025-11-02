@@ -1,7 +1,7 @@
 #include "../include/transition.h"
 #include "../include/constants.h"
 #include <cmath>
-
+/*
 void Transition::update(float deltaTime) {
 
 	float crossSectionalArea = Transition::host.waterHeight;
@@ -22,7 +22,7 @@ void Transition::update(float deltaTime) {
 		Transition::targets[0].waterHeight += deltaVolume;
 		Transition::targets[1].waterHeight -= deltaVolume;
 	}
-}
+}*/
 
 
 //ASSUMPTIONS:

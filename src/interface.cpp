@@ -91,7 +91,7 @@ void Interface::printCell(CellType cell, CellType prevCell)
     }
 }
 
-void Interface::print(body_t* bodies, size_t bodyCount)
+void Interface::print(Body* bodies, size_t bodyCount)
 {
     for (size_t i = 0; i < bodyCount; i++)
     {
