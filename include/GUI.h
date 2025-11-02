@@ -34,8 +34,8 @@ private:
 public:
     GUI();
 
-    std::vector<Body> bodies;
-    std::vector<Hole> holes;
+    std::vector<Body> *bodies;
+    std::vector<Hole> *holes;
 
     // returns true if the user has provided input to create new bodies
     bool GetUserInput();

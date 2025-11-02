@@ -1,4 +1,5 @@
 #include <iostream>
+#include <raylib.h>
 
 #include "../include/scene.h"
 #include "../include/interface.h"
@@ -8,8 +9,8 @@
 
 // phase 0;
 // #include "../tester/phase0/connectedDiffTest.h"
-// #include "../tester/phase0/connectedTest.h"
-#include "../tester/phase0/connectedTest2.h" //
+ #include "../tester/phase0/connectedTest.h"
+// #include "../tester/phase0/connectedTest2.h" //
 // #include "../tester/phase0/connectedTest3.h"
 //#include "../tester/phase0/fullContainer.h" ////
 
@@ -30,31 +31,46 @@ int main()
 	GUI gui = GUI();
 	Scene scene = Scene();
 
-	Body bodies[TEST_BODY_COUNT];
-	Hole holes[TEST_HOLE_COUNT];
+	std::vector<Body> bodies;
+	std::vector<Hole> holes;
 
-	createTestBodies(bodies, holes);
+	createTestBodies(&bodies, &holes);
 
-	for (size_t i = 0; i < TEST_BODY_COUNT; i++)
+	for (size_t i = 0; i < bodies.size(); i++)
 	{
-		gui.bodies.push_back(bodies[i]);
+		gui.bodies = &bodies;
 	}
 
-	for (size_t i = 0; i < TEST_HOLE_COUNT; i++)
+	for (size_t i = 0; i < holes.size(); i++)
 	{
-		gui.holes.push_back(holes[i]);
+		gui.holes = &holes;
 	}
 	
+    // for (size_t i = 0; i < bodies.size(); i++)
+    // {
+    //     printf("Body %d: %s\n", i, bodies.at(i).toString().c_str());
+    //     /* code */
+    // }
+
+    // for (size_t i = 0; i < holes.size(); i++)
+    // {
+    //     printf("Hole %d\n", i);
+    //     /* code */
+    // }
+
 	gui.GetUserInput();
 
-	for (size_t i = 0; i < TEST_BODY_COUNT; i++)
+	bodies = *gui.bodies;
+	holes = *gui.holes;
+
+	for (size_t i = 0; i < bodies.size(); i++)
 	{
-		scene.addBody(&bodies[i]);
+		scene.addBody(&bodies.at(i));
 	}
 
-	for (size_t i = 0; i < TEST_HOLE_COUNT; i++)
+	for (size_t i = 0; i < holes.size(); i++)
 	{
-		scene.addHole(&holes[i]);
+		scene.addHole(&holes.at(i));
 	}
 
 	while(!WindowShouldClose())
@@ -78,7 +94,7 @@ int main()
 			/* code */
 		}
 		
-		gui.bodies = myVector;
+		gui.bodies = &myVector;
 
 		Hole* holes = *scene.getHolesForGUI();
 
@@ -91,7 +107,7 @@ int main()
 			/* code */
 		}
 		
-		gui.holes = holeVect;
+		gui.holes = &holeVect;
 
 		gui.NextFrame();
 

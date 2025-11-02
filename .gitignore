@@ -101,3 +101,8 @@ StyleCopReport.xml
 
 # debug information files
 *.dwo
+
+.vscode/c_cpp_properties.json
+
+src/*.o
+water_simulator

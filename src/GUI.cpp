@@ -1,3 +1,4 @@
+#include <raylib.h>
 #include "../include/GUI.h"
 
 GUI::GUI()
@@ -22,6 +23,20 @@ GUI::GUI()
 // returns true if the user has provided input to create new bodies
 bool GUI::GetUserInput()
 {
+    // for (size_t i = 0; i < this->bodies->size(); i++)
+    // {
+    //     printf("Body %d: %s\n", i, this->bodies->at(i).toString().c_str());
+    //     /* code */
+    // }
+
+    // for (size_t i = 0; i < this->holes->size(); i++)
+    // {
+    //     printf("Hole %d\n", i);
+    //     /* code */
+    // }
+    
+    
+
     this->isUserInput = true;
     // Update
     //----------------------------------------------------------------------------------
@@ -36,9 +51,9 @@ bool GUI::GetUserInput()
             bool isConflict = false;
             Vector2 mouseWorldPos = GetMousePosition();
             mouseWorldPos.y = windowHeight - mouseWorldPos.y;
-            for (size_t i = 0; i < this->bodies.size(); i++)
+            for (size_t i = 0; i < this->bodies->size(); i++)
             {
-                Body body = this->bodies.at(i);
+                Body body = this->bodies->at(i);
 
                 isConflict |= ((mouseWorldPos.x >= body.pos_x &&
                             mouseWorldPos.x <= (body.pos_x + body.width) &&
@@ -66,7 +81,7 @@ bool GUI::GetUserInput()
                 newBody.width = 50;
                 newBody.maxHeight = 50;
                 newBody.waterHeight = 0;
-                this->bodies.push_back(newBody);
+                this->bodies->push_back(newBody);
             }
         }
 
@@ -92,7 +107,7 @@ bool GUI::GetUserInput()
 }
 std::vector<Body> GUI::getBodiesFromInput()
 {
-    return this->bodies;
+    return *this->bodies;
 }
 
 void GUI::NextFrame()
@@ -100,12 +115,12 @@ void GUI::NextFrame()
     // Update
     //----------------------------------------------------------------------------------
 
-    // for(int i = 0; i < this->bodies.size(); i++)
+    // for(int i = 0; i < this->bodies->size(); i++)
     // {
-    //     printf("Body %d: %s\n", i, this->bodies.at(i).toString().c_str());
+    //     printf("Body %d: %s\n", i, this->bodies->at(i).toString().c_str());
     // }
 
-    // for (size_t i = 0; i < this->holes.size(); i++)
+    // for (size_t i = 0; i < this->holes->size(); i++)
     // {
     //     printf("Hole %d\n", i);
     //     /* code */
@@ -119,9 +134,9 @@ void GUI::NextFrame()
         bool isConflict = false;
         Vector2 mouseWorldPos = GetMousePosition();
         mouseWorldPos.y = windowHeight - mouseWorldPos.y;
-        for (size_t i = 0; i < this->bodies.size(); i++)
+        for (size_t i = 0; i < this->bodies->size(); i++)
         {
-            Body body = this->bodies.at(i);
+            Body body = this->bodies->at(i);
 
             isConflict |= ((mouseWorldPos.x >= body.pos_x &&
                            mouseWorldPos.x <= (body.pos_x + body.width) &&
@@ -149,7 +164,7 @@ void GUI::NextFrame()
             newBody.width = 50;
             newBody.maxHeight = 50;
             newBody.waterHeight = 0;
-            this->bodies.push_back(newBody);
+            this->bodies->push_back(newBody);
         }
     }
 
@@ -159,9 +174,9 @@ void GUI::NextFrame()
         Vector2 mouseWorldPos = GetMousePosition();
         mouseWorldPos.y = windowHeight - mouseWorldPos.y;
         bool foundSelectedCell = false;
-        for (size_t i = 0; i < this->holes.size(); i++)
+        for (size_t i = 0; i < this->holes->size(); i++)
         {
-            Hole hole = this->holes.at(i);
+            Hole hole = this->holes->at(i);
 
             bool isSelectedHole;
 
@@ -182,7 +197,7 @@ void GUI::NextFrame()
 
             if (isSelectedHole)
             {
-                this->selectedHole = &this->holes.at(i);
+                this->selectedHole = &this->holes->at(i);
                 // Update input boxes with selected body properties
                 this->inputBoxes.at(0).SetText(TextFormat("%.2f", this->selectedHole->pos_x));
                 this->inputBoxes.at(1).SetText(TextFormat("%.2f", this->selectedHole->pos_y));
@@ -192,9 +207,9 @@ void GUI::NextFrame()
 
         }
         
-        for (size_t i = 0; i < this->bodies.size(); i++)
+        for (size_t i = 0; i < this->bodies->size(); i++)
         {
-            Body body = this->bodies.at(i);
+            Body body = this->bodies->at(i);
 
             bool isSelectedBody = ((mouseWorldPos.x >= body.pos_x &&
                            mouseWorldPos.x <= (body.pos_x + body.width) &&
@@ -203,7 +218,7 @@ void GUI::NextFrame()
 
             if (isSelectedBody)
             {
-                this->selectedBody = &this->bodies.at(i);
+                this->selectedBody = &this->bodies->at(i);
                 // Update input boxes with selected body properties
                 this->inputBoxes.at(0).SetText(TextFormat("%.2f", this->selectedBody->pos_x));
                 this->inputBoxes.at(1).SetText(TextFormat("%.2f", this->selectedBody->pos_y));
@@ -275,11 +290,11 @@ void GUI::NextFrame()
                 if(this->selectedHole != nullptr)
                 {
                     // Delete selected hole
-                    for (size_t i = 0; i < this->holes.size(); i++)
+                    for (size_t i = 0; i < this->holes->size(); i++)
                     {
-                        if (&this->holes.at(i) == this->selectedHole)
+                        if (&this->holes->at(i) == this->selectedHole)
                         {
-                            this->holes.erase(this->holes.begin() + i);
+                            this->holes->erase(this->holes->begin() + i);
                             break;
                         }
                     }
@@ -292,11 +307,11 @@ void GUI::NextFrame()
                 else if(this->selectedBody != nullptr)
                 {
                 // Delete selected body
-                    for (size_t i = 0; i < this->bodies.size(); i++)
+                    for (size_t i = 0; i < this->bodies->size(); i++)
                     {
-                        if (&this->bodies.at(i) == this->selectedBody)
+                        if (&this->bodies->at(i) == this->selectedBody)
                         {
-                            this->bodies.erase(this->bodies.begin() + i);
+                            this->bodies->erase(this->bodies->begin() + i);
                             break;
                         }
                     }
@@ -340,9 +355,9 @@ void GUI::NextFrame()
         mouseWorldPos.y = windowHeight - mouseWorldPos.y;
 
         // check to see that we click on a body
-        for (size_t i = 0; i < this->bodies.size(); i++)
+        for (size_t i = 0; i < this->bodies->size(); i++)
         {
-            Body body = this->bodies.at(i);
+            Body body = this->bodies->at(i);
 
             bool isOnBody = ((mouseWorldPos.x >= body.pos_x &&
                            mouseWorldPos.x <= (body.pos_x + body.width) &&
@@ -427,9 +442,26 @@ void GUI::NextFrame()
                         }
                     }  
                 }
+                newHole.bodies[0] = &this->bodies->at(i);
+                for (size_t j = 0; j < this->bodies->size(); j++)
+                {
+                    if (j == i) continue;
+                    
+            bool isSelectedBody = ((bodies->at(i).pos_x >= body.pos_x + 5 &&
+                           bodies->at(i).pos_x <= (body.pos_x + body.width + 5) &&
+                           bodies->at(i).pos_y >= body.pos_y - 5 &&
+                           bodies->at(i).pos_y <= (body.pos_y + body.maxHeight + 5)));
+
+                    if (isSelectedBody) {
+                        newHole.bodies[1] = &this->bodies->at(j);
+                        break;
+                    }
+                }
+                
+                
 
                 this->selectedHole = &newHole;
-                this->holes.push_back(newHole);
+                this->holes->push_back(newHole);
             }
         }
     }
@@ -481,9 +513,9 @@ void GUI::NextFrame()
             rlPopMatrix();
 
             // Rectangle shapes and lines
-            for (size_t i = 0; i < this->bodies.size(); i++)
+            for (size_t i = 0; i < this->bodies->size(); i++)
             {
-                Body body = this->bodies.at(i);
+                Body body = this->bodies->at(i);
 
                 // Draw the container rectangle
                 DrawRectangleLines(body.pos_x, windowHeight - body.pos_y - body.maxHeight, body.width, body.maxHeight, BROWN);
@@ -491,12 +523,12 @@ void GUI::NextFrame()
                 // Draw the water rectangle
                 DrawRectangle(body.pos_x+1, windowHeight-body.pos_y - body.waterHeight+1, body.width-2, body.waterHeight-1, BLUE);
             }
-            for (size_t i = 0; i < this->holes.size(); i++)
+            for (size_t i = 0; i < this->holes->size(); i++)
             {
-                Hole hole = this->holes.at(i);
+                Hole hole = this->holes->at(i);
 
                 // Draw the hole
-                if(hole.direction == VERTICAL)
+                if(hole.direction == HORIZONTAL)
                 {
                     DrawRectangle(hole.pos_x, windowHeight-hole.pos_y-5, 10, hole.width, RED);
                 }
