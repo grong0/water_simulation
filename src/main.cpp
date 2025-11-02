@@ -8,9 +8,9 @@
 
 // phase 0;
 // #include "../tester/phase0/connectedDiffTest.h"
-//  #include "../tester/phase0/connectedTest.h"
+ #include "../tester/phase0/connectedTest.h"
 // #include "../tester/phase0/connectedTest2.h" //
-#include "../tester/phase0/connectedTest3.h"
+// #include "../tester/phase0/connectedTest3.h"
 //#include "../tester/phase0/fullContainer.h" ////
 
 // phase 1;
@@ -58,6 +58,9 @@ int main()
     // }
 
 	gui.GetUserInput();
+
+	bodies = *gui.bodies;
+	holes = *gui.holes;
 
 	for (size_t i = 0; i < bodies.size(); i++)
 	{

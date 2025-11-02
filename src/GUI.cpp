@@ -441,6 +441,23 @@ void GUI::NextFrame()
                         }
                     }  
                 }
+                newHole.bodies[0] = &this->bodies->at(i);
+                for (size_t j = 0; j < this->bodies->size(); j++)
+                {
+                    if (j == i) continue;
+                    
+            bool isSelectedBody = ((bodies->at(i).pos_x >= body.pos_x + 5 &&
+                           bodies->at(i).pos_x <= (body.pos_x + body.width + 5) &&
+                           bodies->at(i).pos_y >= body.pos_y - 5 &&
+                           bodies->at(i).pos_y <= (body.pos_y + body.maxHeight + 5)));
+
+                    if (isSelectedBody) {
+                        newHole.bodies[1] = &this->bodies->at(j);
+                        break;
+                    }
+                }
+                
+                
 
                 this->selectedHole = &newHole;
                 this->holes->push_back(newHole);
@@ -510,7 +527,7 @@ void GUI::NextFrame()
                 Hole hole = this->holes->at(i);
 
                 // Draw the hole
-                if(hole.direction == VERTICAL)
+                if(hole.direction == HORIZONTAL)
                 {
                     DrawRectangle(hole.pos_x, windowHeight-hole.pos_y-5, 10, hole.width, RED);
                 }
