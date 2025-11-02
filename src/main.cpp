@@ -2,6 +2,9 @@
 
 #include "../include/scene.h"
 #include "../include/interface.h"
+#include "../include/GUI.h"
+#include <vector>
+
 
 // phase 0;
 // #include "../tester/phase0/connectedDiffTest.h"
@@ -23,9 +26,10 @@ int main()
 
 
 	// Call GUI for init water sim
-	Interface ui = Interface(testGrid);
-
+	//Interface ui = Interface(testGrid);
+	GUI gui = GUI();
 	Scene scene = Scene();
+<<<<<<< HEAD
 
 	Body bodies[TEST_BODY_COUNT];
 	Hole holes[TEST_HOLE_COUNT];
@@ -56,6 +60,29 @@ int main()
 		}
 	}
 
+=======
+	std::vector bodies = std::vector<body_t>();
+	
+	gui.GetUserInput();
+	// bodies = gui.getBodiesFromInput();
+
+	// for (size_t i = 0; i < bodies.size(); i++)
+	// {
+	// 	scene.addBody(&bodies.at(i));
+	// }
+
+	// while(!WindowShouldClose()) {
+	// 	scene.update();
+	// 	gui.NextFrame();
+	// 	// ui.print(bodies, TEST_BODY_COUNT);
+	// 	//printf("next step\n");
+		
+	// 	// std::string temp;
+	// 	// std::cin >> temp;
+	// }
+    
+	gui.closeWindow();
+>>>>>>> 4c012d1ef005e5db0e9858f3af68a5b4891c6fc3
 
     return 0;
 }
