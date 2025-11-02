@@ -15,9 +15,6 @@ private:
     const int windowWidth = 800;
     const int windowHeight = 600;
 
-    std::vector<body_t> bodies;
-    std::vector<hole_t> holes;
-    
     // Camera2D camera;
 
     body_t* selectedBody = nullptr;
@@ -29,10 +26,15 @@ private:
 
     std::vector<TextBox> inputBoxes;
 
+    Rectangle playButton = { 650,  50, 50, 50 };
+
     // int zoomMode; // 0: wheel zoom, 1: mouse drag zoom
 
 public:
     GUI();
+
+    std::vector<body_t> bodies;
+    std::vector<hole_t> holes;
 
     // returns true if the user has provided input to create new bodies
     bool GetUserInput();

@@ -36,15 +36,15 @@ int main()
 	// 	scene.addBody(&bodies.at(i));
 	// }
 
-	while(!WindowShouldClose()) {
-		scene.update();
-		gui.NextFrame();
-		// ui.print(bodies, TEST_BODY_COUNT);
-		//printf("next step\n");
+	// while(!WindowShouldClose()) {
+	// 	scene.update();
+	// 	gui.NextFrame();
+	// 	// ui.print(bodies, TEST_BODY_COUNT);
+	// 	//printf("next step\n");
 		
-		// std::string temp;
-		// std::cin >> temp;
-	}
+	// 	// std::string temp;
+	// 	// std::cin >> temp;
+	// }
     
 	gui.closeWindow();
 
