@@ -1,4 +1,5 @@
 #include <iostream>
+#include <raylib.h>
 
 #include "../include/scene.h"
 #include "../include/interface.h"
