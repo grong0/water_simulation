@@ -5,16 +5,19 @@
 // 		this->holes[i] = hole_t(); // Assuming hole_t has a default constructor
 // 	}
 // }
-Scene::Scene() {
+Scene::Scene()
+{
 	this->bodyCount = 0;
 	this->holeCount = 0;
 }
 
-void Scene::update() {
+void Scene::update()
+{
 	return;
 }
 
-body_t** Scene::getBodyNeighbors(body_t* body) {
+body_t** Scene::getBodyNeighbors(body_t* body)
+{
 	for (size_t i = 0; i < this->holeCount; i++)
 	{
 		/* code */

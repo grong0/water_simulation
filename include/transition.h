@@ -5,12 +5,12 @@
 
 class Transition
 {
-public:
-	Transition(body_t host, body_t* targets);
+	public:
+		Transition(body_t host, body_t* targets);
 
-	body_t host;
-	body_t targets[2];
-	void update(float deltaTime);
+		body_t host;
+		body_t targets[2];
+		void update(float deltaTime);
 };
 
 #endif

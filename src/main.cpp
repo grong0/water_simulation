@@ -13,11 +13,11 @@
 // #include "../tester/phase1/drainTest.h"
 
 
-int main() 
+int main()
 {
     printf("Hello, Water!\n");
 
-	
+
 
 	// Call GUI for init water sim
 	Interface ui = Interface(testGrid);
@@ -32,17 +32,18 @@ int main()
 	{
 		scene.addBody(&bodies[i]);
 	}
-	
 
-	while(true) {
+
+	while(true)
+	{
 		scene.update();
 		ui.print(bodies, TEST_BODY_COUNT);
 		printf("next step\n");
-		
+
 		std::string temp;
 		std::cin >> temp;
 	}
-    
+
 
     return 0;
 }

@@ -4,11 +4,11 @@
 #include <string>
 
 // A body of water
-typedef struct
+typedef struct body
 {
 	// Whether or not the body has a lid on it
 	bool isCapped;
-	
+
 	// The maximum height of the body, relative to pos_y
 	float maxHeight;
 
@@ -26,17 +26,20 @@ typedef struct
 	// The Y position of the body
 	float pos_y;
 
-	float waterLevel() {
+	float waterLevel()
+	{
 		return pos_y - waterHeight;
 	}
 
-	float volume() {
+	float volume()
+	{
 		return waterHeight * width;
 	}
 
-	std::string toString() {
+	std::string toString()
+	{
 		return "Body at (" + std::to_string(pos_x) + ", " + std::to_string(pos_y) + "), has a size of " + std::to_string(width) + " by " + std::to_string(maxHeight) + " and has a waterHeight of " + std::to_string(waterHeight);
-	}	
-}body_t;
+	}
+} body_t;
 
 #endif

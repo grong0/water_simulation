@@ -8,7 +8,8 @@ enum Direction {
 	HORIZONTAL = 1
 };
 
-typedef struct {
+typedef struct hole
+{
 	// The width of the hole
 	int width;
 
