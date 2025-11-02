@@ -8,13 +8,13 @@
 #define TEST_HOLE_COUNT 2
 
 void createTestBodies(Body* bodies, Hole* holes){
-// Create test bodies  isCapped, maxHeight, waterHeight, width, pos_x, pos_y
-    bodies[0] = Body{ true   , 5.0f      , 4.0f       , 1.0f , 0.0f , 0.0f }; // Body 1
-    bodies[1] = Body{ true   , 10.0f     , 6.0f       , 1.0f , 1.0f , 0.0f }; // Body 2
-    bodies[2] = Body{ true   , 10.0f     , 8.5f       , 1.0f , 2.0f , 0.0f }; // Body 3
-// Create test holes  width, direction, {bodies connected}
-	holes[0] = Hole{ 1      , 1, 1, HORIZONTAL, &bodies[0], &bodies[1] };
-	holes[1] = Hole{ 1      , 1, 1, HORIZONTAL, &bodies[1], &bodies[2] };
+// Create test bodies  isCapped, maxHeight, waterHeight,      width,      pos_x,          pos_y
+    bodies[0] = Body{ true   , 5.0f *20     , 4.0f*20       , 1.0f*20 , 0.0f*20 + 50 , 0.0f * 20 + 250 }; // Body 1
+    bodies[1] = Body{ true   , 10.0f*20     , 6.0f*20       , 1.0f*20 , 1.0f*20 + 50 , 0.0f * 20 + 250 }; // Body 2
+    bodies[2] = Body{ true   , 10.0f*20     , 8.5f*20       , 1.0f*20 , 2.0f*20 + 50 , 0.0f * 20 + 250 }; // Body 3
+// Create test holes  width,             direction,          {bodies connected}
+	holes[0] = Hole{ 1.0f * 20     , 1.0f * 20 + 50, 1.0f * 20 + 250, HORIZONTAL, &bodies[0], &bodies[1] };
+	holes[1] = Hole{ 1.0f * 20     , 1.0f * 20 + 50, 1.0f * 20 + 250, HORIZONTAL, &bodies[1], &bodies[2] };
 }
 
 

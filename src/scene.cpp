@@ -6,7 +6,7 @@
 
 // Scene::Scene() : bodyCount(0), holeCount(0) {
 // 	for (size_t i = 0; i < HOLE_LIMIT; i++) {
-// 		this->holes[i] = hole_t(); // Assuming hole_t has a default constructor
+// 		this->holes[i] = Hole(); // Assuming Hole has a default constructor
 // 	}
 // }
 Scene::Scene()
@@ -27,7 +27,7 @@ void Scene::update(float deltaTime) {
 	}
 }
 
-/*body_t** Scene::getBodyNeighbors(body_t* body) {
+/*Body** Scene::getBodyNeighbors(Body* body) {
 	for (size_t i = 0; i < this->holeCount; i++)
 	{
 		
@@ -60,4 +60,14 @@ bool Scene::addHole(Hole *hole)
 		return true;
 	}
 	return false;
+}
+
+Hole** Scene::getHolesForGUI()
+{
+	return this->holes;
+}
+
+Body** Scene::getBodiesForGUI()
+{
+	return this->bodies;
 }

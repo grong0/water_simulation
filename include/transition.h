@@ -6,10 +6,10 @@
 class Transition
 {
 	public:
-		Transition(body_t host, body_t* targets);
+		Transition(Body host, Body* targets);
 
-	body_t host;
-	body_t targets[2];
+	Body host;
+	Body targets[2];
 	void update(float deltaTime);
 };*/
 

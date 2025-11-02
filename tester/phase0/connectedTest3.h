@@ -8,17 +8,17 @@
 #define TEST_HOLE_COUNT 4
 
 void createTestBodies(Body* bodies, Hole* holes) {
-    // Create test bodies  isCapped, maxHeight, waterHeight, width, pos_x, pos_y
-    bodies[0] = Body{ true   , 10.0f     , 2.0f       , 1.0f , 0.0f , 2.0f }; // Body 1
-    bodies[1] = Body{ true   , 10.0f     , 3.0f       , 1.0f , 2.0f , 2.0f }; // Body 2
-    bodies[2] = Body{ true   , 10.0f     , 7.0f       , 1.0f , 4.0f , 2.0f }; // Body 3
-    bodies[3] = Body{ true   , 10.0f     , 4.0f       , 1.0f , 6.0f , 2.0f }; // Body 4
-    bodies[4] = Body{ true   , 2.0f      , 2.0f       , 7.0f , 0.0f , 0.0f }; // Body 5
-    // Create test holes  width, direction, {bodies connected}
-    holes[0] = Hole{ 1      , 0.5, 2, VERTICAL, &bodies[0], &bodies[4] };
-    holes[1] = Hole{ 1      , 2.5, 2, VERTICAL, &bodies[1], &bodies[4] };
-    holes[2] = Hole{ 1      , 4.5, 2, VERTICAL, &bodies[2], &bodies[4] };
-    holes[3] = Hole{ 1      , 6.5, 2, VERTICAL, &bodies[3], &bodies[4] };
+    // Create test  isCapped, maxHeight,        waterHeight,       width,          pos_x,        pos_y
+    bodies[0] = Body{ true   , 10.0f * 20.0    , 2.0f *20.0      , 1.0f * 20.0, 0.0f * 20.0 + 50, 2.0f * 20.0 + 250}; // Body 1
+    bodies[1] = Body{ true   , 10.0f * 20.0    , 3.0f *20.0      , 1.0f * 20.0, 2.0f * 20.0 + 50, 2.0f * 20.0 + 250}; // Body 2
+    bodies[2] = Body{ true   , 10.0f * 20.0    , 7.0f *20.0      , 1.0f * 20.0, 4.0f * 20.0 + 50, 2.0f * 20.0 + 250}; // Body 3
+    bodies[3] = Body{ true   , 10.0f * 20.0    , 4.0f *20.0      , 1.0f * 20.0, 6.0f * 20.0 + 50, 2.0f * 20.0 + 250}; // Body 4
+    bodies[4] = Body{ true   , 2.0f  * 20.0    , 2.0f *20.0      , 7.0f * 20.0, 0.0f * 20.0 + 50, 0.0f * 20.0 + 250}; // Body 5
+    // Create test  width,     x                     y       direction, {bodies connected}
+    holes[0] = Hole{ 1 * 5.0, 0.5 * 20.0 + 50, 2 * 20.0 + 250, VERTICAL, &bodies[0], &bodies[4] };
+    holes[1] = Hole{ 1 * 5.0, 2.5 * 20.0 + 50, 2 * 20.0 + 250, VERTICAL, &bodies[1], &bodies[4] };
+    holes[2] = Hole{ 1 * 5.0, 4.5 * 20.0 + 50, 2 * 20.0 + 250, VERTICAL, &bodies[2], &bodies[4] };
+    holes[3] = Hole{ 1 * 5.0, 6.5 * 20.0 + 50, 2 * 20.0 + 250, VERTICAL, &bodies[3], &bodies[4] };
 }
 
 

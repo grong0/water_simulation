@@ -5,9 +5,9 @@
 
 #define TEST_BODY_COUNT 1
 
-void createTestBodies(body_t* bodies){
+void createTestBodies(Body* bodies){
 // Create test bodies      isCapped, maxHeight, waterHeight, width, pos_x, pos_y
-    *bodies = body_t{false   , 3.0f     , 3.0f       , 3.0f , 0.0f , 0.0f}; // Body 1
+    *bodies = Body{false   , 3.0f     , 3.0f       , 3.0f , 0.0f , 0.0f}; // Body 1
 }
 
 CellType testGrid[][DISPLAY_WIDTH] = 

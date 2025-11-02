@@ -33,7 +33,7 @@ class Scene
 
 	public:
 		// Creates a scene from given bodies of water
-		// Scene(body_t* bodies[BODY_LIMIT], hole_t* holes[HOLE_LIMIT]);
+		// Scene(Body* bodies[BODY_LIMIT], Hole* holes[HOLE_LIMIT]);
         Scene();
 
 		// Gets a given body's neighbors
@@ -50,6 +50,11 @@ class Scene
 		// Adds a new hole to the scene, returns whether
 		// or not the hole was added successfully
 		bool addHole(Hole* hole);
+
+		// Returns the bodies for GUI
+		Hole** getHolesForGUI();
+
+		Body** getBodiesForGUI();
 };
 
 #endif

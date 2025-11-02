@@ -8,14 +8,14 @@
 
 // phase 0;
 // #include "../tester/phase0/connectedDiffTest.h"
-//#include "../tester/phase0/connectedTest.h"
-//#include "../tester/phase0/connectedTest2.h"
-#include "../tester/phase0/connectedTest3.h"
-//#include "../tester/phase0/fullContainer.h"
+// #include "../tester/phase0/connectedTest.h"
+#include "../tester/phase0/connectedTest2.h" //
+// #include "../tester/phase0/connectedTest3.h"
+//#include "../tester/phase0/fullContainer.h" ////
 
 // phase 1;
 // #include "../tester/phase1/drain+connectedTest.h"
-//#include "../tester/phase1/advancedTankNetwork.h"
+// #include "../tester/phase1/advancedTankNetwork.h"
 // #include "../tester/phase1/drainTest.h"
 
 
@@ -29,12 +29,23 @@ int main()
 	//Interface ui = Interface(testGrid);
 	GUI gui = GUI();
 	Scene scene = Scene();
-<<<<<<< HEAD
 
 	Body bodies[TEST_BODY_COUNT];
 	Hole holes[TEST_HOLE_COUNT];
 
 	createTestBodies(bodies, holes);
+
+	for (size_t i = 0; i < TEST_BODY_COUNT; i++)
+	{
+		gui.bodies.push_back(bodies[i]);
+	}
+
+	for (size_t i = 0; i < TEST_HOLE_COUNT; i++)
+	{
+		gui.holes.push_back(holes[i]);
+	}
+	
+	gui.GetUserInput();
 
 	for (size_t i = 0; i < TEST_BODY_COUNT; i++)
 	{
@@ -45,25 +56,59 @@ int main()
 	{
 		scene.addHole(&holes[i]);
 	}
-	
 
-	while(true)
+	while(!WindowShouldClose())
 	{
-		ui.print(bodies, TEST_BODY_COUNT);
-		printf("next step\n");
+		//ui.print(bodies, TEST_BODY_COUNT);
+		// printf("next step\n");
 		
-		int temp = 0;
-		std::cin >> temp;
+		Body* arr = *scene.getBodiesForGUI();
 
-		for (int i = 0; i < temp; i++) {
-			scene.update(0.0001);
+		// for (size_t i = 0; i < TEST_BODY_COUNT; i++)
+		// {
+		// 	printf("Body %d: %s\n", i, arr[i].toString().c_str());
+		// }
+
+    	// Initialize vector using the range-based constructor
+    	std::vector<Body> myVector(arr, arr + TEST_BODY_COUNT);
+
+		for (size_t i = 0; i < TEST_BODY_COUNT; i++)
+		{
+			myVector.push_back(arr[i]);
+			/* code */
 		}
+		
+		gui.bodies = myVector;
+
+		Hole* holes = *scene.getHolesForGUI();
+
+    	// Initialize vector using the range-based constructor
+    	std::vector<Hole> holeVect(holes, holes + TEST_HOLE_COUNT);
+
+		for (size_t i = 0; i < TEST_HOLE_COUNT; i++)
+		{
+			holeVect.push_back(holes[i]);
+			/* code */
+		}
+		
+		gui.holes = holeVect;
+
+		gui.NextFrame();
+
+		scene.update(0.0001);
+		//_sleep(100);
+
+		// int temp = 0;
+		// std::cin >> temp;
+
+		// for (int i = 0; i < temp; i++) {
+		// 	scene.update(0.0001);
+		// }
 	}
 
-=======
-	std::vector bodies = std::vector<body_t>();
+	// std::vector bodies = std::vector<Body>();
 	
-	gui.GetUserInput();
+	// gui.GetUserInput();
 	// bodies = gui.getBodiesFromInput();
 
 	// for (size_t i = 0; i < bodies.size(); i++)
@@ -79,10 +124,9 @@ int main()
 		
 	// 	// std::string temp;
 	// 	// std::cin >> temp;
-	// }
+	// } /
     
 	gui.closeWindow();
->>>>>>> 4c012d1ef005e5db0e9858f3af68a5b4891c6fc3
 
     return 0;
 }

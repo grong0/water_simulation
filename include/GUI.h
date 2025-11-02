@@ -7,7 +7,6 @@
 #include "TextBox.h"
 
 #include "body.h"
-#include "hole.h"
 #include <vector>
 
 class GUI {
@@ -15,11 +14,13 @@ private:
     const int windowWidth = 800;
     const int windowHeight = 600;
 
+    bool isUserInput = false;
+
     // Camera2D camera;
 
-    body_t* selectedBody = nullptr;
+    Body* selectedBody = nullptr;
     TextBox* selectedInputBox = nullptr;
-    hole_t* selectedHole = nullptr;
+    Hole* selectedHole = nullptr;
 
     Rectangle saveButton = { windowWidth - 120, windowHeight - 40, 100, 30 };
     Rectangle deleteButton = { windowWidth - 240, windowHeight - 40, 100, 30 };
@@ -33,12 +34,12 @@ private:
 public:
     GUI();
 
-    std::vector<body_t> bodies;
-    std::vector<hole_t> holes;
+    std::vector<Body> bodies;
+    std::vector<Hole> holes;
 
     // returns true if the user has provided input to create new bodies
     bool GetUserInput();
-    std::vector<body_t> getBodiesFromInput();
+    std::vector<Body> getBodiesFromInput();
     void NextFrame();
     void closeWindow();
 };
