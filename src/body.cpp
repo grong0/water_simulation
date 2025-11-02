@@ -5,7 +5,7 @@
 
 float torricelliVelocity(float dh)
 {
-	return sqrt(2 * GRAVITY * abs(dh)) * ((dh+1)/(abs(dh)+1));
+	return sqrt(2 * GRAVITY * abs(dh)) * (dh >= 0 ? 1 : -1);
 }
 
 float torricelliVelocityBetweenPressures(float dh, float pressure1, float pressure2)
@@ -44,6 +44,15 @@ void Body::update(float deltaTime)
 	{
 		float deltaH = this->holes[i]->getDestination(this)->waterLevel() - this->waterLevel();
 		float volumetricFlow = this->holes[i]->width * torricelliVelocity(deltaH);
+
+		if (volumetricFlow > 0 && this->holes[i]->getDestination(this)->volume()) {
+			volumetricFlow = this->holes[i]->getDestination(this)->volume();
+		}
+		else if (volumetricFlow < 0 && this->holes[i]->getDestination(this)->maxHeight - this->holes[i]->getDestination(this)->waterHeight > ALMOSTZERO) {
+			volumetricFlow = std::min(volumetricFlow, (this->holes[i]->getDestination(this)->maxHeight - this->holes[i]->getDestination(this)->waterHeight) * this->holes[i]->getDestination(this)->width);
+		}
+
+
 		volumetricFlows.push_back(volumetricFlow);
 		volumetricNormal += volumetricFlow;
 	}
