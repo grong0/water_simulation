@@ -7,18 +7,18 @@
 #define TEST_BODY_COUNT 5
 #define TEST_HOLE_COUNT 4
 
-void createTestBodies(Body* bodies, Hole* holes) {
+void createTestBodies(std::vector<Body> *bodies, std::vector<Hole> *holes) {
     // Create test  isCapped, maxHeight,        waterHeight,       width,          pos_x,        pos_y
-    bodies[0] = Body{ true   , 10.0f * 20.0    , 2.0f *20.0      , 1.0f * 20.0, 0.0f * 20.0 + 50, 2.0f * 20.0 + 250}; // Body 1
-    bodies[1] = Body{ true   , 10.0f * 20.0    , 3.0f *20.0      , 1.0f * 20.0, 2.0f * 20.0 + 50, 2.0f * 20.0 + 250}; // Body 2
-    bodies[2] = Body{ true   , 10.0f * 20.0    , 7.0f *20.0      , 1.0f * 20.0, 4.0f * 20.0 + 50, 2.0f * 20.0 + 250}; // Body 3
-    bodies[3] = Body{ true   , 10.0f * 20.0    , 4.0f *20.0      , 1.0f * 20.0, 6.0f * 20.0 + 50, 2.0f * 20.0 + 250}; // Body 4
-    bodies[4] = Body{ true   , 2.0f  * 20.0    , 2.0f *20.0      , 7.0f * 20.0, 0.0f * 20.0 + 50, 0.0f * 20.0 + 250}; // Body 5
+    bodies->push_back(Body{ true   , 10.0f * 20.0    , 2.0f *20.0      , 1.0f * 20.0, 0.0f * 20.0 + 50, 2.0f * 20.0 + 250}); // Body 1
+    bodies->push_back(Body{ true   , 10.0f * 20.0    , 3.0f *20.0      , 1.0f * 20.0, 2.0f * 20.0 + 50, 2.0f * 20.0 + 250}); // Body 2
+    bodies->push_back(Body{ true   , 10.0f * 20.0    , 7.0f *20.0      , 1.0f * 20.0, 4.0f * 20.0 + 50, 2.0f * 20.0 + 250}); // Body 3
+    bodies->push_back(Body{ true   , 10.0f * 20.0    , 4.0f *20.0      , 1.0f * 20.0, 6.0f * 20.0 + 50, 2.0f * 20.0 + 250}); // Body 4
+    bodies->push_back(Body{ true   , 2.0f  * 20.0    , 2.0f *20.0      , 7.0f * 20.0, 0.0f * 20.0 + 50, 0.0f * 20.0 + 250}); // Body 5
     // Create test  width,     x                     y       direction, {bodies connected}
-    holes[0] = Hole{ 1 * 5.0, 0.5 * 20.0 + 50, 2 * 20.0 + 250, VERTICAL, &bodies[0], &bodies[4] };
-    holes[1] = Hole{ 1 * 5.0, 2.5 * 20.0 + 50, 2 * 20.0 + 250, VERTICAL, &bodies[1], &bodies[4] };
-    holes[2] = Hole{ 1 * 5.0, 4.5 * 20.0 + 50, 2 * 20.0 + 250, VERTICAL, &bodies[2], &bodies[4] };
-    holes[3] = Hole{ 1 * 5.0, 6.5 * 20.0 + 50, 2 * 20.0 + 250, VERTICAL, &bodies[3], &bodies[4] };
+    holes->push_back(Hole{ 1 * 5.0, 0.5 * 20.0 + 50, 2 * 20.0 + 250, VERTICAL, &bodies->at(0), &bodies->at(4) });
+    holes->push_back(Hole{ 1 * 5.0, 2.5 * 20.0 + 50, 2 * 20.0 + 250, VERTICAL, &bodies->at(1), &bodies->at(4) });
+    holes->push_back(Hole{ 1 * 5.0, 4.5 * 20.0 + 50, 2 * 20.0 + 250, VERTICAL, &bodies->at(2), &bodies->at(4) });
+    holes->push_back(Hole{ 1 * 5.0, 6.5 * 20.0 + 50, 2 * 20.0 + 250, VERTICAL, &bodies->at(3), &bodies->at(4) });
 }
 
 
