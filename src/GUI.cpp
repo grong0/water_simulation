@@ -1,3 +1,4 @@
+#include <raylib.h>
 #include "../include/GUI.h"
 
 GUI::GUI()
