@@ -20,7 +20,7 @@ int main()
 {
     printf("Hello, Water!\n");
 
-	
+
 
 	// Call GUI for init water sim
 	Interface ui = Interface(testGrid);
@@ -55,7 +55,7 @@ int main()
 			scene.update(0.0001);
 		}
 	}
-    
+
 
     return 0;
 }

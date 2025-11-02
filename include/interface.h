@@ -5,7 +5,7 @@
 #define HALF_WATER_STR '~'
 #define AIR_STR ' '
 
-#define H_WALL_STR '-' 
+#define H_WALL_STR '-'
 #define V_WALL_STR '|'
 #define CORNER_STR '+'
 #define EMPTY_WALL_STR '.'
@@ -19,18 +19,17 @@
 
 class Interface
 {
-private:
+	private:
+		void printCell(CellType cell, CellType prevCell);
 
-    void printCell(CellType cell, CellType prevCell);
+		// 2D array representing the display
+		CellType display[DISPLAY_HEIGHT][DISPLAY_WIDTH] = {AIR};
 
-    // 2D array representing the display
-    CellType display[DISPLAY_HEIGHT][DISPLAY_WIDTH] = {AIR};
+	public:
+		Interface(CellType display[][DISPLAY_WIDTH]);
+		Interface();
 
-public:
-    Interface(CellType display[][DISPLAY_WIDTH]);
-    Interface();
-
-    void print(Body* bodies, size_t bodyCount);
+		void print(body_t* bodies, size_t bodyCount);
 };
 
 

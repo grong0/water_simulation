@@ -5,7 +5,8 @@
 #define RHO 1.0f // g/cm^3
 #define ALMOSTZERO 0.000001f
 
-enum CellType {
+enum CellType
+{
     AIR = 0,
     WATER = 1,
     HALF_WATER = 2,

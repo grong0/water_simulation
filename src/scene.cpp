@@ -9,7 +9,8 @@
 // 		this->holes[i] = hole_t(); // Assuming hole_t has a default constructor
 // 	}
 // }
-Scene::Scene() {
+Scene::Scene()
+{
 	this->bodyCount = 0;
 	this->holeCount = 0;
 }

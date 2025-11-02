@@ -7,8 +7,8 @@
 #define BODY_LIMIT 12
 #define HOLE_LIMIT 12
 
-class Scene {
-
+class Scene
+{
 	private:
 		// Each body in the scene
 		Body* bodies[BODY_LIMIT];
